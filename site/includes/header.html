@@ -1,0 +1,74 @@
+<div class="container site-header__inner">
+  <a class="logo" href="index.html" data-i18n-aria="brand.logoAria">
+    <img class="logo__img" src="assets/images/logo.jpeg" alt="" width="1600" height="716" decoding="async" />
+  </a>
+
+  <button
+    class="nav-toggle"
+    type="button"
+    data-nav-toggle
+    aria-controls="site-nav-panel"
+    aria-expanded="false"
+  >
+    <span data-i18n="nav.openMenu">Menu</span>
+  </button>
+
+  <nav class="site-nav" id="site-nav-panel">
+    <a data-nav="home" href="index.html" data-i18n="nav.home">Inicio</a>
+    <a data-nav="about" href="quienes-somos.html" data-i18n="nav.about">Quienes somos</a>
+    <a data-nav="projects" href="proyectos.html" data-i18n="nav.projects">Proyectos</a>
+    <a data-nav="contact" href="contacto.html" data-i18n="nav.contact">Contacto</a>
+
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-set-lang="es" class="is-active" aria-pressed="true" data-i18n="nav.langEs">
+        ES
+      </button>
+      <button type="button" data-set-lang="en" aria-pressed="false" data-i18n="nav.langEn">EN</button>
+    </div>
+
+    <div class="social-row" aria-label="Social">
+      <a
+        href="https://www.facebook.com/share/1E36FsAMCL/?mibextid=wwXIfr"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-i18n-aria="social.facebookLabel"
+        aria-label="Facebook"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            fill="currentColor"
+            d="M13.5 22v-8.2h2.7l.4-3.2H13.5V8.9c0-.9.3-1.5 1.6-1.5h1.7V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.2H7.5v3.2H9.4V22h4.1z"
+          />
+        </svg>
+      </a>
+      <a
+        href="https://www.instagram.com/soyplanetaorg/"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-i18n-aria="social.instagramLabel"
+        aria-label="Instagram"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            fill="currentColor"
+            d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm6.5-.9a1.4 1.4 0 1 0 1.4 1.4 1.4 1.4 0 0 0-1.4-1.4zM12 9.8A3.2 3.2 0 1 1 8.8 13 3.2 3.2 0 0 1 12 9.8z"
+          />
+        </svg>
+      </a>
+      <a
+        href="https://www.linkedin.com/company/fundaci%C3%B3n-soy-planeta/"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-i18n-aria="social.linkedinLabel"
+        aria-label="LinkedIn"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path
+            fill="currentColor"
+            d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm2.5 6.5h2.2V17H7.5V9.5zM8.6 8.3a1.3 1.3 0 1 1 0-2.6 1.3 1.3 0 0 1 0 2.6zM18 17h-2.2v-4c0-1-.4-1.7-1.3-1.7-.7 0-1.1.5-1.3 1-.1.2-.1.5-.1.8V17h-2.2V9.5H13v1h.1c.3-.5 1.1-1.2 2.4-1.2 1.8 0 2.5 1.2 2.5 2.8V17z"
+          />
+        </svg>
+      </a>
+    </div>
+  </nav>
+</div>

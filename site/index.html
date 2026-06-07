@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Educación en sostenibilidad para niños, niñas y jóvenes." />
+    <title data-i18n="meta.titleDefault">Fundación Soy Planeta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Montserrat:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="site-header" id="site-header"></header>
+
+    <main id="contenido">
+      <!-- 1. Hero: manos + globo, titular, franja azul, tres pilares (captura inicial) -->
+      <section class="hero hero--home">
+        <div class="hero__content container" style="min-height: min(78vh, 760px); display: flex; flex-direction: column">
+          <h1 class="hero__title" data-i18n="home.heroTitle">SOY PLANETA</h1>
+          <p class="hero__tagline" data-i18n="home.heroTagline">Construyendo una nueva historia para la Tierra</p>
+
+          <!-- Orden DOM: título₁, caja₁, título₂… En escritorio las clases --c1…--c3 fijan columna/fila en CSS -->
+          <div class="pillars">
+            <h3 class="pillar__title pillar__title--c1" data-i18n="home.pillar1Title">Inspiramos mentes</h3>
+            <article class="pillar pillar--c1">
+              <p data-i18n="home.pillar1Text"></p>
+            </article>
+            <h3 class="pillar__title pillar__title--c2" data-i18n="home.pillar2Title">Aportamos conocimiento</h3>
+            <article class="pillar pillar--c2">
+              <p data-i18n="home.pillar2Text"></p>
+            </article>
+            <h3 class="pillar__title pillar__title--c3" data-i18n="home.pillar3Title">Unimos fuerzas</h3>
+            <article class="pillar pillar--c3">
+              <p data-i18n="home.pillar3Text"></p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Sección cielo / siluetas: SER Planetario en dos columnas -->
+      <section class="section-ser section-ser--planetario">
+        <div class="container">
+          <h2 data-i18n="home.serHeading">Trabajando por el SER Planetario</h2>
+          <div class="two-col prose prose--ser">
+            <div>
+              <h3 data-i18n="home.serInspireTitle">Nos inspira</h3>
+              <p data-i18n="home.serInspireText"></p>
+            </div>
+            <div>
+              <h3 data-i18n="home.serGoalTitle">La meta</h3>
+              <p data-i18n="home.serGoalText"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Banda oscura: solo titular + párrafo (sin tarjetas dentro) -->
+      <section class="section section--dark section--dark-intro">
+        <div class="container">
+          <p class="section__eyebrow" data-i18n="home.programsEyebrow">Nuestro enfoque</p>
+          <h2 class="section__title section__title--tight" data-i18n="home.programsTitle">Jóvenes y Niños que Cambian Planeta</h2>
+          <p class="section__lead section__lead--solo" data-i18n="home.programsLead"></p>
+        </div>
+      </section>
+
+      <!-- 3. Fondo claro: tres tarjetas con fotos de programa (reemplace placeholders por recortes reales) -->
+      <section class="section section--cards-band">
+        <div class="container">
+          <div class="cards3">
+            <article class="card">
+              <div class="card__media">
+                <img src="assets/images/index_sensibilizacion.jpg" alt="" width="640" height="400" loading="lazy" />
+              </div>
+              <div class="card__body">
+                <h3 data-i18n="home.card1Title">Sensibilización Planetaria</h3>
+                <p data-i18n="home.card1Text"></p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__media">
+                <img src="assets/images/index_aprendizaje.jpeg" alt="" width="640" height="400" loading="lazy" />
+              </div>
+              <div class="card__body">
+                <h3 data-i18n="home.card2Title">Aprendizaje creativo</h3>
+                <p data-i18n="home.card2Text"></p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card__media">
+                <img src="assets/images/index_liderazgo.jpeg" alt="" width="640" height="400" loading="lazy" />
+              </div>
+              <div class="card__body">
+                <h3 data-i18n="home.card3Title">Liderazgos juveniles</h3>
+                <p data-i18n="home.card3Text"></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      
+    </main>
+
+    <footer class="site-footer" id="site-footer"></footer>
+
+    <!-- Netlify needs this static copy because the footer form is injected via JS -->
+    <form name="newsletter" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="email" name="email" />
+      <input name="bot-field" />
+    </form>
+
+    <script src="js/config.js" defer></script>
+    <script src="js/includes.js" defer></script>
+    <script src="js/i18n.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </body>
+</html>

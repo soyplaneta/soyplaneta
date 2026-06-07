@@ -1,0 +1,51 @@
+<div class="container footer-grid">
+  <div>
+    <h3 data-i18n="footer.contactTitle">Datos de contacto</h3>
+    <p>
+      <a href="tel:+573193836741"><span data-i18n="footer.phone">319 3836741</span></a>
+    </p>
+    <p>
+      <a href="mailto:luzhelena@soyplaneta.org"><span data-i18n="footer.email">luzhelena@soyplaneta.org</span></a>
+    </p>
+    <p class="small">
+      <a href="https://www.instagram.com/soyplanetaorg/" target="_blank" rel="noopener noreferrer">
+        <span data-i18n="footer.instagramHandle">@soyplanetaorg.co</span>
+      </a>
+    </p>
+    <p class="small">
+      <a href="boletines.html" data-nav="newsletters" data-i18n="nav.newsletters">Boletines</a>
+    </p>
+    <p class="small">© <span data-year>2026</span> Fundación Soy Planeta. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+  </div>
+
+  <div style="text-align: center">
+    <a
+      class="privacy-pill"
+      href="assets/files/poliitica-de-tratamiento-de-datos-personales-de-menores-de-edad-mP43vOVNl2FVyZ3V.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-i18n="footer.privacy"
+      >Política de Tratamiento de Datos</a>
+    <p class="small" style="margin-top: 1rem; opacity: 0.85" data-i18n="forms.note"></p>
+  </div>
+
+  <div>
+    <form
+      class="footer-form"
+      name="newsletter"
+      method="POST"
+      data-netlify="true"
+      netlify
+      netlify-honeypot="bot-field"
+      action="thank-you.html"
+    >
+      <input type="hidden" name="form-name" value="newsletter" />
+      <p hidden>
+        <label>Do not fill this in: <input name="bot-field" /></label>
+      </p>
+      <label for="footer-email" data-i18n="footer.newsletterLabel">Correo</label>
+      <input id="footer-email" type="email" name="email" autocomplete="email" data-i18n-placeholder="footer.newsletterPlaceholder" placeholder="" />
+      <button type="submit" data-i18n="footer.submit">Enviar</button>
+    </form>
+  </div>
+</div>

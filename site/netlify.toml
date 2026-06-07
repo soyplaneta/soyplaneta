@@ -1,0 +1,8 @@
+# Netlify: set “Publish directory” to this folder (the folder that contains index.html).
+#
+# Footer newsletter form: after deploy, enable email notifications at
+# Site configuration → Forms → Form notifications → Add notification → Email
+# and set the recipient to luzhelena@soyplaneta.org
+[build]
+  command = "node scripts/fetch-instagram-thumbnails.mjs"
+  publish = "."

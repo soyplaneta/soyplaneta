@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "titleDefault": "Soy Planeta Foundation",
+    "description": "Sustainability education for children and youth in Colombia."
+  },
+  "brand": {
+    "logoAria": "Soy Planeta — Go to home"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About us",
+    "projects": "Projects",
+    "newsletters": "Newsletters",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "langEs": "ES",
+    "langEn": "EN"
+  },
+  "social": {
+    "facebookLabel": "Facebook",
+    "instagramLabel": "Instagram",
+    "linkedinLabel": "LinkedIn"
+  },
+  "footer": {
+    "contactTitle": "Contact details",
+    "phone": "319 3836741",
+    "email": "luzhelena@soyplaneta.org",
+    "instagramHandle": "@soyplanetaorg.co",
+    "rights": "All rights reserved.",
+    "privacy": "Personal data policy",
+    "newsletterLabel": "Enter your email here",
+    "newsletterPlaceholder": "Type your email here",
+    "submit": "Send contact form",
+    "privacyHref": "#"
+  },
+  "home": {
+    "heroTitle": "SOY PLANETA",
+    "heroTagline": "Building a new story for Earth",
+    "pillar1Title": "We inspire minds",
+    "pillar1Text": "We work for a generation of children and youth committed to the planet.",
+    "pillar2Title": "We share knowledge",
+    "pillar2Text": "We create learning spaces to shift human activity toward sustainability.",
+    "pillar3Title": "We join forces",
+    "pillar3Text": "We connect people, communities, and organizations to strengthen action for planetary care.",
+    "programsEyebrow": "Our approach",
+    "programsTitle": "Young people and children changing the planet",
+    "programsLead": "Programs that help new generations become a positive force in how humanity relates to the planet.",
+    "card1Title": "Planetary awareness",
+    "card1Text": "Spaces to reflect on today’s human–planet relationships and the need for change.",
+    "card2Title": "Creative learning",
+    "card2Text": "Participation in spaces that empower youth to lead community change toward a sustainable future.",
+    "card3Title": "Youth leadership",
+    "card3Text": "Strengthening young people’s leadership in national and international public policy spaces.",
+    "serHeading": "Working for planetary being",
+    "serInspireTitle": "What inspires us",
+    "serInspireText": "Empowering people—especially children and youth across Colombia—to be agents of change in building a new relationship between humanity and the planet.",
+    "serGoalTitle": "Our goal",
+    "serGoalText": "A Colombia where nature and biodiversity are integral to every person’s identity and wellbeing—and where young people lead a harmonious relationship between society and the planet."
+  },
+  "about": {
+    "pageTitle": "About us",
+    "heroKicker": "SUSTAINABILITY EDUCATION",
+    "heroBadge": "Present at COP16!",
+    "heroQuote": "We are a group of people committed to new generations—amplifying and fostering action around planetary sustainability.",
+    "directorRole": "Director / Founder",
+    "directorName": "LUZ HELENA GUZMÁN RAMÍREZ",
+    "directorCred": "ANTHROPOLOGIST · MASTER’S IN ENVIRONMENTAL MANAGEMENT · UNIVERSITY OF THE ANDES",
+    "directorP1": "With more than 18 years supporting environmental projects in Bogotá and other regions of Colombia, she has accompanied initiatives that connect citizens, institutions, and territories.",
+    "directorP2": "She has worked with Grupo Semana and Semana Sostenible, organizing spaces that put children and youth at the center of conversations about sustainability.",
+    "directorP3": "She founded Fundación Soy Planeta to strengthen new generations as guardians of the planet and to enable concrete community-led action.",
+    "serTitle": "Working for planetary being",
+    "serHeading": "Working for planetary being",
+    "inspireTitle": "What inspires us",
+    "inspireText": "Empowering people—especially children and youth across Colombia—to be agents of change in building a new relationship between humanity and the planet.",
+    "goalTitle": "Our goal",
+    "goalText": "A Colombia where nature and biodiversity are integral to every person’s identity and wellbeing—and where young people lead a harmonious relationship between society and the planet.",
+    "inspireShort": "Empower children and youth across the country to become planetary beings and agents of change for sustainability.",
+    "goalShort": "Position Colombia’s children and youth as global leaders in protecting and caring for the planet through sustainability awareness and practice.",
+    "voiceTitle": "Amplifying the voices of new generations",
+    "voiceCta": "Want to amplify yours?",
+    "voiceButton": "Write to us",
+    "commitTitle": "Commitment",
+    "commitText": "We are committed to sustainability and positive change through the power of children and youth—to ensure a better future for everyone.",
+    "hoursTitle": "Hours",
+    "hoursText": "Monday to Friday, 9am–5pm",
+    "contactBlockTitle": "Contact",
+    "contactBlockText": "Reach out by email or social media.",
+    "mapTitle": "Location"
+  },
+  "projects": {
+    "pageTitle": "Projects",
+    "ecoTitle": "ECO CHALLENGE 2026",
+    "ecoSub": "The new generations’ challenge for the 2030 Agenda",
+    "ecoCta": "Sign up",
+    "conectaTitle": "ConectaFuturo",
+    "conectaText": "We transform traditional career guidance into building a sustainable life project.",
+    "conectaCta": "I want to participate",
+    "genTitle": "Generación Planeta",
+    "genText": "Second summit and national spaces connecting youth voices for the planet.",
+    "genCta": "Learn more",
+    "mareaTitle": "Guardians of the tide",
+    "mareaText": "First Children’s Summit on Marine Ecosystems: ocean literacy and climate action starting in childhood.",
+    "mareaCta": "Take part",
+    "impactTitle": "Impact",
+    "impactYearTitle": "Impact",
+    "impactYearRange": "2024 – 2025",
+    "impactNumber": "1850",
+    "impactAudience": "CHILDREN AND TEENS",
+    "impactCities": "Bogotá - Cali",
+    "impactGoalTitle": "Goal for 2030",
+    "impactGoalNumber": "5,000",
+    "impactGoalLine1": "children",
+    "impactGoalLine2": "and teens",
+    "partnersTitle": "Schools, institutions, and partners 2024–2025",
+    "partnersHint": ""
+  },
+  "newsletters": {
+    "pageTitle": "Newsletters",
+    "featuredAlt": "Latest newsletter",
+    "cardAlt": "Newsletter",
+    "cardHint": "Replace with a PDF cover thumbnail or download link."
+  },
+  "contact": {
+    "pageTitle": "Contact",
+    "lead": "Want to talk with us or receive updates?",
+    "emailUs": "Email us"
+  },
+  "forms": {
+    "note": ""
+  }
+}

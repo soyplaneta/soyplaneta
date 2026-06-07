@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "titleDefault": "Fundación Soy Planeta",
+    "description": "Educación en sostenibilidad para niños, niñas y jóvenes en Colombia."
+  },
+  "brand": {
+    "logoAria": "Soy Planeta — Ir al inicio"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Quienes somos",
+    "projects": "Proyectos",
+    "newsletters": "Boletines",
+    "contact": "Contacto",
+    "openMenu": "Abrir menú",
+    "langEs": "ES",
+    "langEn": "EN"
+  },
+  "social": {
+    "facebookLabel": "Facebook",
+    "instagramLabel": "Instagram",
+    "linkedinLabel": "LinkedIn"
+  },
+  "footer": {
+    "contactTitle": "Datos de contacto",
+    "phone": "319 3836741",
+    "email": "luzhelena@soyplaneta.org",
+    "instagramHandle": "@soyplanetaorg.co",
+    "rights": "Todos los derechos reservados.",
+    "privacy": "Política de Tratamiento de Datos",
+    "newsletterLabel": "Ingresa tu correo electrónico aquí",
+    "newsletterPlaceholder": "Escribe tu correo electrónico aquí",
+    "submit": "Enviar formulario de contacto",
+    "privacyHref": "#"
+  },
+  "home": {
+    "heroTitle": "SOY PLANETA",
+    "heroTagline": "Construyendo una nueva historia para la Tierra",
+    "pillar1Title": "Inspiramos mentes",
+    "pillar1Text": "Trabajamos para una generación de niños y jóvenes comprometida con el planeta.",
+    "pillar2Title": "Aportamos conocimiento",
+    "pillar2Text": "Creamos espacios de aprendizaje para el cambio de la actividad humana hacia la sostenibilidad.",
+    "pillar3Title": "Unimos fuerzas",
+    "pillar3Text": "Conectamos individuos, comunidades y organizaciones para potencializar las acciones encaminadas al cuidado del planeta.",
+    "programsEyebrow": "Nuestro enfoque",
+    "programsTitle": "Jóvenes y Niños que Cambian Planeta",
+    "programsLead": "Proyectos que buscan que las nuevas generaciones sean el cambio positivo de las relaciones del ser humano con el planeta.",
+    "card1Title": "Sensibilización Planetaria",
+    "card1Text": "Generación de espacios de reconocimiento frente a las relaciones actuales del ser humano con el planeta y su necesidad de cambio.",
+    "card2Title": "Aprendizaje creativo",
+    "card2Text": "Participación en espacios que empoderen a los jóvenes para liderar cambios en su comunidad hacia un futuro sostenible.",
+    "card3Title": "Liderazgos juveniles",
+    "card3Text": "Fortalecimiento de los liderazgos de jóvenes y niños en entornos de política pública nacional e internacional.",
+    "serHeading": "Trabajando por el SER Planetario",
+    "serInspireTitle": "Nos inspira",
+    "serInspireText": "Trabajar para empoderar al ser humano, en especial a niños y jóvenes de todas las regiones de Colombia, para que sean agentes de cambio en la construcción de una nueva relación entre el planeta y el ser humano.",
+    "serGoalTitle": "La meta",
+    "serGoalText": "Una Colombia donde la naturaleza y la biodiversidad sea parte integral de la identidad y el bienestar de cada ciudadano, y desde el liderazgo de los jóvenes y niños, construir una nueva relación de armonía entre el planeta y la sociedad."
+  },
+  "about": {
+    "pageTitle": "Quienes somos",
+    "heroKicker": "EDUCACIÓN EN SOSTENIBILIDAD",
+    "heroBadge": "¡Presente en la COP16!",
+    "heroQuote": "Somos un grupo de seres humanos comprometidos con las nuevas generaciones para amplificar y propiciar acciones entorno a la sostenibilidad del planeta.",
+    "directorRole": "Directora/Fundadora",
+    "directorName": "LUZ HELENA GUZMÁN RAMÍREZ",
+    "directorCred": "ANTROPÓLOGA · MAGÍSTER EN GERENCIA AMBIENTAL · UNIVERSIDAD DE LOS ANDES",
+    "directorP1": "Ha dedicado  más de 18 años de su vida profesional a dirigir proyectos ambientales con un solo objetivo: construir la sostenibilidad. Su camino la llevó a trabajar en iniciativas de alto impacto, como la dirección de Reasentamientos Humanos en Bogotá, donde aprendió de primera mano la profunda conexión entre el bienestar de las personas y el entorno que habitan.",
+    "directorP2": "En el Grupo Semana con Semana Sostenible, fue la fuerza motriz de eventos icónicos como las primeras Cumbres de Sostenibilidad y, de manera especial, las dos primeras Cumbres de Niños, donde vio en los ojos de los más jóvenes la curiosidad y la pasión que la inspirarían a seguir. También ha sido una voz importante en la inclusión de la perspectiva de género en el Ministerio de Ambiente, convencida de que el cuidado de la tierra y la equidad van de la mano.",
+    "directorP3": "Motivada por la idea de que la verdadera transformación comienza en la infancia,  creó la Fundación Soy Planeta. Aquí, canaliza toda su experiencia para sembrar semillas de conciencia ambiental, empoderando a cada niño y niña para que se conviertan en los guardianes de nuestro planeta y generando alianzas que potencialicen esta labor.",
+    "serTitle": "Trabajando por el SER Planetario",
+    "serHeading": "Trabajando por el SER Planetario",
+    "inspireTitle": "Nos inspira",
+    "inspireText": "Trabajar para empoderar al ser humano, en especial a niños y jóvenes de todas las regiones de Colombia, para que sean agentes de cambio en la construcción de una nueva relación entre el planeta y el ser humano.",
+    "goalTitle": "La meta",
+    "goalText": "Una Colombia donde la naturaleza y la biodiversidad sea parte integral de la identidad y el bienestar de cada ciudadano, y desde el liderazgo de los jóvenes y niños, construir una nueva relación de armonía entre el planeta y la sociedad.",
+    "inspireShort": "Trabajar para empoderar a niños y jóvenes de todas las regiones del país para que se conviertan en SERES planetarios que sean agentes de cambio por la sostenibilidad del planeta.",
+    "goalShort": "Posicionar a la población de jóvenes y niños de Colombia como líderes mundiales en la protección y cuidado del planeta a través del reconocimiento y el ejercicio de la sostenibilidad.",
+    "voiceTitle": "Amplificando la voz de las nuevas generaciones",
+    "voiceCta": "¿Quiéres amplificar la tuya?",
+    "voiceButton": "Escríbenos",
+    "commitTitle": "Compromiso",
+    "commitText": "Estamos comprometidos con la sostenibilidad y el cambio positivo a través del poder de los jóvenes y niños para garantizar un futuro mejor para todos.",
+    "hoursTitle": "Horario",
+    "hoursText": "Lunes a Viernes 9am–5pm",
+    "contactBlockTitle": "Contacto",
+    "contactBlockText": "Escríbenos por correo o redes sociales.",
+    "mapTitle": "Ubicación"
+  },
+  "projects": {
+    "pageTitle": "Proyectos",
+    "ecoTitle": "ECO CHALLENGE 2026",
+    "ecoSub": "El reto de las nuevas generaciones por la Agenda 2030",
+    "ecoCta": "Inscríbete",
+    "conectaTitle": "ConectaFuturo",
+    "conectaText": "Transformamos la orientación vocacional tradicional en una construcción de proyecto de vida sostenible.",
+    "conectaCta": "Quiero participar",
+    "genTitle": "Generación Planeta",
+    "genText": "Segunda Cumbre y espacios nacionales para articular voces juveniles por el planeta.",
+    "genCta": "Infórmate",
+    "mareaTitle": "Guardianes de la marea",
+    "mareaText": "I Cumbre Infantil de Ecosistemas Marinos: cultura oceánica y acción climática desde la infancia.",
+    "mareaCta": "Participa",
+    "impactTitle": "Impacto",
+    "impactYearTitle": "Impacto",
+    "impactYearRange": "2024 – 2025",
+    "impactNumber": "1850",
+    "impactAudience": "NIÑOS, NIÑAS Y ADOLESCENTES",
+    "impactCities": "Bogotá - Cali",
+    "impactGoalTitle": "Meta a 2030",
+    "impactGoalNumber": "5.000",
+    "impactGoalLine1": "niños, niñas",
+    "impactGoalLine2": "y adolescentes",
+    "partnersTitle": "Colegios, instituciones y entidades participantes 2024–2025",
+    "partnersHint": ""
+  },
+  "newsletters": {
+    "pageTitle": "Boletines",
+    "featuredAlt": "Último boletín",
+    "cardAlt": "Boletín",
+    "cardHint": "Sustituya por la portada del PDF o un enlace de descarga."
+  },
+  "contact": {
+    "pageTitle": "Contacto",
+    "lead": "¿Quieres conversar con nosotros o recibir novedades?",
+    "emailUs": "Escríbenos"
+  },
+  "forms": {
+    "note": ""
+  }
+}

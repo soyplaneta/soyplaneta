@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" role="img" aria-label="">
+  <defs>
+    <linearGradient id="a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffe8d6"/>
+      <stop offset="100%" stop-color="#ffd1b3"/>
+    </linearGradient>
+  </defs>
+  <circle cx="200" cy="200" r="200" fill="url(#a)"/>
+  <circle cx="200" cy="165" r="56" fill="#fff" opacity="0.85"/>
+  <ellipse cx="200" cy="290" rx="110" ry="72" fill="#fff" opacity="0.65"/>
+  <text x="200" y="388" text-anchor="middle" fill="#c17845" font-family="system-ui,sans-serif" font-size="13">Retrato</text>
+</svg>
