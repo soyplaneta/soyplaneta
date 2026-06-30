@@ -120,6 +120,79 @@
         </div>
       </section>
 
+      <!-- Cumplimiento legal -->
+      <section class="section section--legal-compliance">
+        <div class="container legal-compliance">
+          <h2 class="section__title" data-i18n="about.legalTitle">Cumplimiento legal</h2>
+          <!-- <p class="legal-compliance__lead" data-i18n="about.legalText"></p> -->
+          <div class="legal-compliance__doc">
+            <button
+              type="button"
+              class="legal-compliance__open"
+              id="legal-pdf-open"
+              aria-haspopup="dialog"
+              aria-controls="legal-pdf-modal"
+              data-i18n-aria="about.legalOpen"
+              aria-label="Ver informe"
+            >
+              <span class="legal-compliance__open-cover" id="legal-pdf-cover">
+                <span class="legal-compliance__open-loading" data-i18n="about.legalLoading">Cargando vista previa…</span>
+              </span>
+            </button>
+            <a
+              class="btn btn--dark legal-compliance__download"
+              href="assets/files/informe_resultados_esal.pdf"
+              download="informe_resultados_esal.pdf"
+              data-i18n="about.legalDownload"
+              >Descargar informe</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <div
+        class="legal-compliance-modal"
+        id="legal-pdf-modal"
+        hidden
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="legal-pdf-modal-title"
+      >
+        <div class="legal-compliance-modal__scrim" data-close tabindex="-1"></div>
+        <div class="legal-compliance-modal__dialog">
+          <header class="legal-compliance-modal__header">
+            <h3 id="legal-pdf-modal-title" data-i18n="about.legalModalTitle">Informe de resultados ESAL</h3>
+            <button
+              type="button"
+              class="legal-compliance-modal__close"
+              data-close
+              data-i18n-aria="about.legalClose"
+              aria-label="Cerrar"
+            >
+              &times;
+            </button>
+          </header>
+          <div class="legal-compliance-modal__book-wrap">
+            <p class="legal-compliance-modal__loading" id="legal-pdf-book-loading" data-i18n="about.legalModalLoading">
+              Preparando documento…
+            </p>
+            <div id="legal-pdf-book" class="legal-compliance-modal__book" aria-live="polite"></div>
+          </div>
+          <footer class="legal-compliance-modal__footer">
+            <button type="button" class="legal-compliance-modal__nav" id="legal-pdf-prev" data-i18n-aria="about.legalPrevPage" aria-label="Página anterior">
+              ‹
+            </button>
+            <span class="legal-compliance-modal__page" id="legal-pdf-page-indicator">1 / 11</span>
+            <button type="button" class="legal-compliance-modal__nav" id="legal-pdf-next" data-i18n-aria="about.legalNextPage" aria-label="Página siguiente">
+              ›
+            </button>
+          </footer>
+          <p class="legal-compliance-modal__hint" data-i18n="about.legalFlipHint">
+            Haz clic o arrastra las esquinas para pasar página.
+          </p>
+        </div>
+      </div>
+
       <!-- Compromiso + mapa -->
       <section class="section section--commit-map">
         <div class="container map-grid">
@@ -147,7 +220,9 @@
 
     <footer class="site-footer" id="site-footer"></footer>
 
-    <script src="js/config.js" defer></script>
+    <script src="js/config.js"></script>
+    <script src="https://unpkg.com/page-flip@2.0.7/dist/js/page-flip.browser.js" defer></script>
+    <script type="module" src="js/legal-pdf-flipbook.js"></script>
     <script src="js/includes.js" defer></script>
     <script src="js/i18n.js" defer></script>
     <script src="js/main.js" defer></script>
