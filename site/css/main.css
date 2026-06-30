@@ -1496,6 +1496,7 @@ body.legal-compliance-modal-open {
   border-radius: calc(var(--radius) + 4px);
   background: var(--white);
   box-shadow: 0 24px 64px rgba(17, 24, 39, 0.28);
+  overflow: hidden;
 }
 
 .legal-compliance-modal__header {
@@ -1508,6 +1509,8 @@ body.legal-compliance-modal-open {
 .legal-compliance-modal__header h3 {
   margin: 0;
   font-size: 1.05rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .legal-compliance-modal__close {
@@ -1527,19 +1530,30 @@ body.legal-compliance-modal-open {
 
 .legal-compliance-modal__book-wrap {
   position: relative;
-  min-height: clamp(360px, 58vh, 640px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: block;
+  padding: 0.75rem 3.75rem;
   border-radius: var(--radius);
   background: linear-gradient(180deg, #eef6fb 0%, #f8fafc 100%);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.legal-compliance-modal__book {
-  width: 100%;
-  max-width: 920px;
-  min-height: 360px;
+.legal-compliance-modal__page-stage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: min(70vh, 640px);
+  padding: 0.25rem 0;
+}
+
+.legal-compliance-modal__canvas {
+  display: block;
+  max-width: none;
+  border-radius: calc(var(--radius) - 2px);
+  box-shadow: 0 12px 32px rgba(17, 24, 39, 0.14);
+  background: var(--white);
 }
 
 .legal-compliance-modal__loading {
@@ -1557,25 +1571,97 @@ body.legal-compliance-modal-open {
 }
 
 .legal-compliance-modal__footer {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+}
+
+.legal-compliance-modal__zoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.legal-compliance-modal__zoom-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 0;
+  border-radius: 999px;
+  background: #111827;
+  color: var(--white);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.legal-compliance-modal__zoom-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.legal-compliance-modal__zoom-level {
+  min-width: 3.5rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--muted);
 }
 
 .legal-compliance-modal__nav {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
   border: 0;
   border-radius: 999px;
   background: var(--orange);
   color: var(--white);
-  font-size: 1.6rem;
+  font-size: 1.75rem;
+  font-weight: 700;
   line-height: 1;
   cursor: pointer;
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.18);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.legal-compliance-modal__nav:hover,
+.legal-compliance-modal__nav:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.22);
+}
+
+.legal-compliance-modal__nav--side {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 3rem;
+  height: 3rem;
+  transform: translateY(-50%);
+}
+
+.legal-compliance-modal__nav--side:hover,
+.legal-compliance-modal__nav--side:focus-visible {
+  transform: translateY(calc(-50% - 1px));
+}
+
+.legal-compliance-modal__nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: translateY(-50%);
+  box-shadow: none;
+}
+
+.legal-compliance-modal__nav--prev {
+  left: 0.75rem;
+}
+
+.legal-compliance-modal__nav--next {
+  right: 0.75rem;
 }
 
 .legal-compliance-modal__page {
@@ -1592,10 +1678,6 @@ body.legal-compliance-modal-open {
   font-size: 0.92rem;
 }
 
-.legal-compliance-modal__book .stf__parent {
-  margin-inline: auto;
-}
-
 @media (max-width: 640px) {
   .legal-compliance-modal {
     padding: 0.5rem;
@@ -1607,7 +1689,21 @@ body.legal-compliance-modal-open {
   }
 
   .legal-compliance-modal__book-wrap {
-    min-height: 52vh;
+    padding: 0.5rem 3rem;
+  }
+
+  .legal-compliance-modal__nav--side {
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 1.45rem;
+  }
+
+  .legal-compliance-modal__nav--prev {
+    left: 0.35rem;
+  }
+
+  .legal-compliance-modal__nav--next {
+    right: 0.35rem;
   }
 }
 

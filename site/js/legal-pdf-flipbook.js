@@ -1,35 +1,16 @@
 /**
- * ESAL report: preview thumbnail + modal page-flip viewer (PDF.js + StPageFlip).
+ * ESAL report: preview thumbnail + modal PDF viewer (PDF.js) with zoom.
  */
 (function () {
   const PDF_PATH = "assets/files/informe_resultados_esal.pdf";
   const PDFJS_VERSION = "4.10.38";
   const PDFJS_CDN = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS_VERSION}`;
+  const ZOOM_STEPS = [0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3];
 
   function assetUrl(path) {
     const base = typeof window !== "undefined" && window.SOYPLANETA_BASE ? window.SOYPLANETA_BASE : "";
     const normalized = path.replace(/^\//, "");
     return base ? `${base}/${normalized}` : normalized;
-  }
-
-  function waitForPageFlip() {
-    return new Promise((resolve, reject) => {
-      if (window.St && window.St.PageFlip) {
-        resolve(window.St.PageFlip);
-        return;
-      }
-      let attempts = 0;
-      const timer = setInterval(() => {
-        attempts += 1;
-        if (window.St && window.St.PageFlip) {
-          clearInterval(timer);
-          resolve(window.St.PageFlip);
-        } else if (attempts > 100) {
-          clearInterval(timer);
-          reject(new Error("PageFlip library failed to load"));
-        }
-      }, 50);
-    });
   }
 
   async function loadPdfJs() {
@@ -38,21 +19,6 @@
     pdfjsLib.GlobalWorkerOptions.workerSrc = `${PDFJS_CDN}/pdf.worker.min.mjs`;
     window.__soyplanetaPdfJs = pdfjsLib;
     return pdfjsLib;
-  }
-
-  async function renderPageImage(pdf, pageNumber, scale) {
-    const page = await pdf.getPage(pageNumber);
-    const viewport = page.getViewport({ scale });
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d", { alpha: false });
-    canvas.width = Math.floor(viewport.width);
-    canvas.height = Math.floor(viewport.height);
-    await page.render({ canvasContext: context, viewport }).promise;
-    return {
-      dataUrl: canvas.toDataURL("image/jpeg", 0.92),
-      width: canvas.width,
-      height: canvas.height,
-    };
   }
 
   async function loadPdfDocument() {
@@ -68,22 +34,31 @@
     else el.removeAttribute("hidden");
   }
 
-  function setupLegalPdfFlipbook() {
+  function setupLegalPdfViewer() {
     const openBtn = document.getElementById("legal-pdf-open");
     const modal = document.getElementById("legal-pdf-modal");
     const coverHost = document.getElementById("legal-pdf-cover");
-    const bookHost = document.getElementById("legal-pdf-book");
+    const viewport = document.getElementById("legal-pdf-viewport");
+    const canvas = document.getElementById("legal-pdf-canvas");
     const bookLoading = document.getElementById("legal-pdf-book-loading");
     const pageIndicator = document.getElementById("legal-pdf-page-indicator");
+    const zoomIndicator = document.getElementById("legal-pdf-zoom");
     const prevBtn = document.getElementById("legal-pdf-prev");
     const nextBtn = document.getElementById("legal-pdf-next");
+    const zoomOutBtn = document.getElementById("legal-pdf-zoom-out");
+    const zoomInBtn = document.getElementById("legal-pdf-zoom-in");
 
-    if (!openBtn || !modal || !coverHost || !bookHost) return;
+    if (!openBtn || !modal || !coverHost || !viewport || !canvas) return;
 
+    const context = canvas.getContext("2d", { alpha: false });
     let pdfPromise = null;
-    let pageFlip = null;
+    let pdfDoc = null;
     let pageCount = 0;
-    let bookReady = false;
+    let currentPage = 1;
+    let zoomIndex = ZOOM_STEPS.indexOf(1);
+    if (zoomIndex < 0) zoomIndex = 1;
+    let viewerReady = false;
+    let renderToken = 0;
     let lastFocus = null;
 
     function getPdf() {
@@ -91,9 +66,71 @@
       return pdfPromise;
     }
 
-    function updateIndicator(currentIndex) {
-      if (!pageIndicator || !pageCount) return;
-      pageIndicator.textContent = `${currentIndex + 1} / ${pageCount}`;
+    function getPixelRatio() {
+      return Math.min(window.devicePixelRatio || 1, 3);
+    }
+
+    function getViewportWidth() {
+      const styles = window.getComputedStyle(viewport);
+      const paddingX = parseFloat(styles.paddingLeft) + parseFloat(styles.paddingRight);
+      return Math.max(240, viewport.clientWidth - paddingX);
+    }
+
+    async function renderPageToCanvas(pdf, pageNumber, targetCssWidth, zoom) {
+      const page = await pdf.getPage(pageNumber);
+      const baseViewport = page.getViewport({ scale: 1 });
+      const fitScale = targetCssWidth / baseViewport.width;
+      const pixelRatio = getPixelRatio();
+      const renderScale = fitScale * zoom * pixelRatio;
+      const renderViewport = page.getViewport({ scale: renderScale });
+      canvas.width = Math.floor(renderViewport.width);
+      canvas.height = Math.floor(renderViewport.height);
+      canvas.style.width = `${Math.floor(renderViewport.width / pixelRatio)}px`;
+      canvas.style.height = `${Math.floor(renderViewport.height / pixelRatio)}px`;
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = "high";
+      await page.render({ canvasContext: context, viewport: renderViewport }).promise;
+    }
+
+    async function renderPageImage(pdf, pageNumber, targetCssWidth) {
+      const page = await pdf.getPage(pageNumber);
+      const baseViewport = page.getViewport({ scale: 1 });
+      const fitScale = targetCssWidth / baseViewport.width;
+      const pixelRatio = getPixelRatio();
+      const renderScale = fitScale * pixelRatio;
+      const renderViewport = page.getViewport({ scale: renderScale });
+      const offscreen = document.createElement("canvas");
+      const offscreenContext = offscreen.getContext("2d", { alpha: false });
+      offscreen.width = Math.floor(renderViewport.width);
+      offscreen.height = Math.floor(renderViewport.height);
+      await page.render({ canvasContext: offscreenContext, viewport: renderViewport }).promise;
+      return {
+        dataUrl: offscreen.toDataURL("image/png"),
+        width: Math.floor(renderViewport.width / pixelRatio),
+        height: Math.floor(renderViewport.height / pixelRatio),
+      };
+    }
+
+    function updateControls() {
+      if (pageIndicator && pageCount) {
+        pageIndicator.textContent = `${currentPage} / ${pageCount}`;
+      }
+      if (zoomIndicator) {
+        zoomIndicator.textContent = `${Math.round(ZOOM_STEPS[zoomIndex] * 100)}%`;
+      }
+      if (prevBtn) prevBtn.disabled = currentPage <= 1;
+      if (nextBtn) nextBtn.disabled = currentPage >= pageCount;
+      if (zoomOutBtn) zoomOutBtn.disabled = zoomIndex <= 0;
+      if (zoomInBtn) zoomInBtn.disabled = zoomIndex >= ZOOM_STEPS.length - 1;
+    }
+
+    async function renderCurrentPage() {
+      if (!pdfDoc) return;
+      const token = ++renderToken;
+      await renderPageToCanvas(pdfDoc, currentPage, getViewportWidth(), ZOOM_STEPS[zoomIndex]);
+      if (token !== renderToken) return;
+      updateControls();
     }
 
     async function renderCoverPreview() {
@@ -101,13 +138,14 @@
       try {
         const pdf = await getPdf();
         pageCount = pdf.numPages;
-        const { dataUrl } = await renderPageImage(pdf, 1, 1.1);
+        const targetWidth = Math.min(320, getViewportWidth() || 320);
+        const { dataUrl, width, height } = await renderPageImage(pdf, 1, targetWidth);
         coverHost.innerHTML = "";
         const img = document.createElement("img");
         img.src = dataUrl;
         img.alt = "";
-        img.width = 320;
-        img.height = 420;
+        img.width = width;
+        img.height = height;
         img.className = "legal-compliance__open-thumb";
         coverHost.appendChild(img);
       } catch (err) {
@@ -116,47 +154,17 @@
       }
     }
 
-    async function ensureFlipbook() {
-      if (bookReady) return;
-      setHidden(bookLoading, false);
-      bookHost.innerHTML = "";
-
-      const pdf = await getPdf();
-      pageCount = pdf.numPages;
-      const PageFlip = await waitForPageFlip();
-      const images = [];
-
-      for (let i = 1; i <= pageCount; i += 1) {
-        const { dataUrl } = await renderPageImage(pdf, i, 1.35);
-        images.push(dataUrl);
+    async function ensureViewer() {
+      if (viewerReady) {
+        await renderCurrentPage();
+        return;
       }
-
-      const firstPage = await pdf.getPage(1);
-      const viewport = firstPage.getViewport({ scale: 1.35 });
-      const pageWidth = Math.min(Math.floor(viewport.width), 520);
-      const pageHeight = Math.min(Math.floor(viewport.height), 720);
-
-      pageFlip = new PageFlip(bookHost, {
-        width: pageWidth,
-        height: pageHeight,
-        size: "stretch",
-        minWidth: 280,
-        maxWidth: 920,
-        minHeight: 360,
-        maxHeight: 900,
-        maxShadowOpacity: 0.45,
-        showCover: false,
-        mobileScrollSupport: false,
-        usePortrait: true,
-      });
-
-      pageFlip.loadFromImages(images);
-      pageFlip.on("flip", (event) => {
-        updateIndicator(event.data);
-      });
-
-      updateIndicator(pageFlip.getCurrentPageIndex());
-      bookReady = true;
+      setHidden(bookLoading, false);
+      pdfDoc = await getPdf();
+      pageCount = pdfDoc.numPages;
+      currentPage = 1;
+      await renderCurrentPage();
+      viewerReady = true;
       setHidden(bookLoading, true);
     }
 
@@ -164,7 +172,7 @@
       lastFocus = document.activeElement;
       setHidden(modal, false);
       document.body.classList.add("legal-compliance-modal-open");
-      void ensureFlipbook().then(() => {
+      void ensureViewer().then(() => {
         modal.querySelector(".legal-compliance-modal__close")?.focus();
       });
     }
@@ -175,13 +183,32 @@
       if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
     }
 
-    openBtn.addEventListener("click", () => {
-      openModal();
-    });
+    function goToPage(page) {
+      const nextPage = Math.min(pageCount, Math.max(1, page));
+      if (nextPage === currentPage) return;
+      currentPage = nextPage;
+      viewport.scrollTop = 0;
+      viewport.scrollLeft = 0;
+      void renderCurrentPage();
+    }
+
+    function changeZoom(delta) {
+      const nextIndex = Math.min(ZOOM_STEPS.length - 1, Math.max(0, zoomIndex + delta));
+      if (nextIndex === zoomIndex) return;
+      zoomIndex = nextIndex;
+      void renderCurrentPage();
+    }
+
+    openBtn.addEventListener("click", openModal);
 
     modal.querySelectorAll("[data-close]").forEach((el) => {
       el.addEventListener("click", closeModal);
     });
+
+    prevBtn?.addEventListener("click", () => goToPage(currentPage - 1));
+    nextBtn?.addEventListener("click", () => goToPage(currentPage + 1));
+    zoomOutBtn?.addEventListener("click", () => changeZoom(-1));
+    zoomInBtn?.addEventListener("click", () => changeZoom(1));
 
     document.addEventListener("keydown", (event) => {
       if (modal.hidden) return;
@@ -190,25 +217,23 @@
         closeModal();
         return;
       }
-      if (!pageFlip) return;
-      if (event.key === "ArrowLeft") pageFlip.flipPrev();
-      if (event.key === "ArrowRight") pageFlip.flipNext();
+      if (event.key === "ArrowLeft") goToPage(currentPage - 1);
+      if (event.key === "ArrowRight") goToPage(currentPage + 1);
+      if (event.key === "+" || event.key === "=") changeZoom(1);
+      if (event.key === "-") changeZoom(-1);
     });
 
-    prevBtn?.addEventListener("click", () => {
-      pageFlip?.flipPrev();
-    });
-
-    nextBtn?.addEventListener("click", () => {
-      pageFlip?.flipNext();
+    window.addEventListener("resize", () => {
+      if (!viewerReady || modal.hidden) return;
+      void renderCurrentPage();
     });
 
     void renderCoverPreview();
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupLegalPdfFlipbook);
+    document.addEventListener("DOMContentLoaded", setupLegalPdfViewer);
   } else {
-    setupLegalPdfFlipbook();
+    setupLegalPdfViewer();
   }
 })();

@@ -172,23 +172,58 @@
               &times;
             </button>
           </header>
-          <div class="legal-compliance-modal__book-wrap">
+          <div class="legal-compliance-modal__book-wrap" id="legal-pdf-viewport">
+            <button
+              type="button"
+              class="legal-compliance-modal__nav legal-compliance-modal__nav--side legal-compliance-modal__nav--prev"
+              id="legal-pdf-prev"
+              data-i18n-aria="about.legalPrevPage"
+              aria-label="Página anterior"
+            >
+              <span aria-hidden="true">←</span>
+            </button>
             <p class="legal-compliance-modal__loading" id="legal-pdf-book-loading" data-i18n="about.legalModalLoading">
               Preparando documento…
             </p>
-            <div id="legal-pdf-book" class="legal-compliance-modal__book" aria-live="polite"></div>
+            <div class="legal-compliance-modal__page-stage">
+              <canvas id="legal-pdf-canvas" class="legal-compliance-modal__canvas"></canvas>
+            </div>
+            <button
+              type="button"
+              class="legal-compliance-modal__nav legal-compliance-modal__nav--side legal-compliance-modal__nav--next"
+              id="legal-pdf-next"
+              data-i18n-aria="about.legalNextPage"
+              aria-label="Página siguiente"
+            >
+              <span aria-hidden="true">→</span>
+            </button>
           </div>
           <footer class="legal-compliance-modal__footer">
-            <button type="button" class="legal-compliance-modal__nav" id="legal-pdf-prev" data-i18n-aria="about.legalPrevPage" aria-label="Página anterior">
-              ‹
-            </button>
+            <div class="legal-compliance-modal__zoom" role="group" data-i18n-aria="about.legalZoomGroup" aria-label="Zoom">
+              <button
+                type="button"
+                class="legal-compliance-modal__zoom-btn"
+                id="legal-pdf-zoom-out"
+                data-i18n-aria="about.legalZoomOut"
+                aria-label="Alejar"
+              >
+                −
+              </button>
+              <span class="legal-compliance-modal__zoom-level" id="legal-pdf-zoom">100%</span>
+              <button
+                type="button"
+                class="legal-compliance-modal__zoom-btn"
+                id="legal-pdf-zoom-in"
+                data-i18n-aria="about.legalZoomIn"
+                aria-label="Acercar"
+              >
+                +
+              </button>
+            </div>
             <span class="legal-compliance-modal__page" id="legal-pdf-page-indicator">1 / 11</span>
-            <button type="button" class="legal-compliance-modal__nav" id="legal-pdf-next" data-i18n-aria="about.legalNextPage" aria-label="Página siguiente">
-              ›
-            </button>
           </footer>
-          <p class="legal-compliance-modal__hint" data-i18n="about.legalFlipHint">
-            Haz clic o arrastra las esquinas para pasar página.
+          <p class="legal-compliance-modal__hint" data-i18n="about.legalViewHint">
+            Usa las flechas para cambiar de página y + / − para acercar o alejar.
           </p>
         </div>
       </div>
@@ -221,7 +256,6 @@
     <footer class="site-footer" id="site-footer"></footer>
 
     <script src="js/config.js"></script>
-    <script src="https://unpkg.com/page-flip@2.0.7/dist/js/page-flip.browser.js" defer></script>
     <script type="module" src="js/legal-pdf-flipbook.js"></script>
     <script src="js/includes.js" defer></script>
     <script src="js/i18n.js" defer></script>
