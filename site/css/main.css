@@ -1396,6 +1396,15 @@ a {
   line-height: 1.65;
 }
 
+.legal-compliance__docs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2.5rem 2rem;
+  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
 .legal-compliance__doc {
   display: flex;
   flex-direction: column;
@@ -1404,6 +1413,16 @@ a {
   width: 100%;
   max-width: 320px;
   margin-inline: auto;
+}
+
+.legal-compliance__doc-title {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
 }
 
 .legal-compliance__open {
